@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Ambiente virtual
+.venv/
+venv/
+
+# Variáveis e segredos
+.env
+.env.*
+!.env.exemplo
+credentials.json
+secrets.json
+*.pem
+*.key
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Obsidian
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.trash/
+
+# Livros e materiais privados
+*.pdf
+vault/06-Biblioteca/livros/
+vault/06-Biblioteca/fontes-privadas/
+referencias/originais/
+
+# Resultados temporários
+*.log

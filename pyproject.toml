@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "engenharia-de-ia"
+version = "0.1.0"
+description = "Laboratórios, experimentos e estudos de Engenharia de IA Generativa em PT-BR"
+requires-python = ">=3.11"
+
+dependencies = [
+    "python-dotenv",
+    "pydantic",
+    "httpx",
+    "jupyter",
+    "pandas",
+    "matplotlib"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["capitulos"]
+
+[tool.ruff]
+line-length = 100
