@@ -2,7 +2,7 @@
 tipo: aula
 capitulo: 1
 numero: 1
-status: planejamento
+status: em-andamento
 tags:
   - aula
   - ai-engineering
@@ -12,53 +12,61 @@ tags:
 
 # Aula 01 — Design Patterns e AI Engineering
 
-## Pergunta central
+> [!QUESTION] Pergunta central
+> Por que utilizar um LLM não é a mesma coisa que construir um sistema de IA?
 
-Por que utilizar um LLM não é a mesma coisa que construir
-um sistema de IA?
+---
 
-# Objetivos 
+## 🎯 Objetivos
 
-Ao final desta aula, devo ser capaz de: 
-- explicar o que é AI Engineering; 
-- diferenciar um protótipo GenAI de uma aplicação em produção; 
-- explicar por que um foundation model não é a aplicação completa; 
+Ao final desta aula, devo ser capaz de:
+
+- explicar o que é AI Engineering;
+- diferenciar um protótipo GenAI de uma aplicação em produção;
+- explicar por que um foundation model não é a aplicação completa;
 - entender por que problemas recorrentes de GenAI exigem soluções de engenharia;
-- compreender por que design patterns aparecem como resposta a esses problemas; 
-- reconhecer limitações como não determinismo e alucinação. 
+- compreender por que design patterns aparecem como resposta a esses problemas;
+- reconhecer limitações como não determinismo e alucinação.
 
-- ---
-# Mapa da aula 
-```
-Foundation Model 
-↓ 
-AI Engineering 
-↓ 
-Aplicação GenAI 
-↓ 
-Problemas recorrentes 
-↓ 
+---
+
+## 🗺️ Mapa da aula
+
+```text
+Foundation Model
+      ↓
+AI Engineering
+      ↓
+Aplicação GenAI
+      ↓
+Problemas recorrentes
+      ↓
 Design Patterns
-``` 
+```
 
-## Conceitos
+---
 
-[[AI Engineering]]
-[[Design Pattern]]
-[[Foundation Model]]
-[[Aplicação de IA Generativa]]
-[[Não determinismo]]
-[[Alucinação]]
+## 🧩 Conceitos-chave
 
-# O que é AI Engineering? 
-## Ideia central 
+- [[AI Engineering]]
+- [[Design Pattern]]
+- [[Foundation Model]]
+- [[Aplicação de IA Generativa]]
+- [[Não determinismo]]
+- [[Alucinação]]
+
+---
+
+# 🧱 Bloco 1 — O que é AI Engineering?
+
+## 💡 Ideia central
 
 > [!NOTE]
 > Criar um protótipo utilizando IA generativa pode ser simples.
 
 Uma aplicação mínima pode parecer algo assim:
 
-```
+```python
 resposta = llm("Explique árvores binárias")
 print(resposta)
 ```
@@ -83,23 +91,25 @@ O problema deixa de ser apenas:
 
 > "Como chamar um modelo?"
 
-e passa a ser:
+E passa a ser:
 
-> "Como construir um sistema confiável em torno de um modelo?" 
+> "Como construir um sistema confiável em torno de um modelo?"
 
-# Definição de AI Engineering 
+---
 
-AI Engineering é a prática de construir aplicações e sistemas utilizando  
-foundation models previamente treinados como componentes centrais.
+## 📖 Definição de AI Engineering
 
-==A diferença importante é que, em muitos casos, não precisamos treinar um==  
-==modelo específico do zero.==
+AI Engineering é a prática de construir aplicações e sistemas utilizando foundation models previamente treinados como componentes centrais.
 
-Podemos utilizar um modelo geral e construir ao redor dele os componentes  
-necessários para resolver um problema real. 
+==A diferença importante é que, em muitos casos, não precisamos treinar um modelo específico do zero.==
 
-# Modelo mental 
+Podemos utilizar um modelo geral e construir ao redor dele os componentes necessários para resolver um problema real.
 
+---
+
+## 🧠 Modelo mental
+
+```text
                 FOUNDATION MODEL
                        │
                        ▼
@@ -117,19 +127,20 @@ necessários para resolver um problema real.
         │              │              │
         └──────────────┼──────────────┘
                        ▼
-                    PRODUÇÃO 
+                    PRODUÇÃO
+```
 
+---
 
-# O modelo não é a aplicação
+## 🧩 O modelo não é a aplicação
 
-==GPT, Claude, Gemini, Llama ou outro foundation model não representam,==  
-==sozinhos, o sistema completo.==
+==GPT, Claude, Gemini, Llama ou outro foundation model não representam, sozinhos, o sistema completo.==
 
 O modelo é um componente.
 
 Uma aplicação real pode conter:
 
-```
+```text
 Interface
    │
    ▼
@@ -156,19 +167,21 @@ Usuário
 
 Uma forma simples de guardar essa ideia é:
 
-```
+```text
 LLM ≠ Aplicação
 ```
 
-e sim:
+E sim:
 
-```
+```text
 LLM ∈ Aplicação
 ```
 
-# Protótipo vs Produção
+---
 
-## Protótipo
+## 🏭 Protótipo vs Produção
+
+### Protótipo
 
 A pergunta principal costuma ser:
 
@@ -176,18 +189,17 @@ A pergunta principal costuma ser:
 
 Exemplo:
 
-```
+```python
 resposta = llm("Resuma este texto.")
 ```
 
 Se a resposta parecer boa, o protótipo pode ser considerado promissor.
 
-## Produção
+### Produção
 
 A pergunta muda:
 
-> O sistema consegue realizar essa tarefa de forma suficientemente confiável,  
-> segura, econômica e avaliável para usuários reais?
+> O sistema consegue realizar essa tarefa de forma suficientemente confiável, segura, econômica e avaliável para usuários reais?
 
 Agora precisamos considerar:
 
@@ -200,26 +212,28 @@ Agora precisamos considerar:
 - avaliação;
 - manutenção;
 - mudanças de modelo;
-- observabilidade. 
+- observabilidade.
 
-# Mudança de mentalidade
+---
 
-## Mentalidade de demonstração
+## 🔄 Mudança de mentalidade
 
-```
+### Mentalidade de demonstração
+
+```text
 "O modelo respondeu?"
 ```
 
-## Mentalidade de engenharia
+### Mentalidade de engenharia
 
-```
+```text
 "O sistema funciona de maneira suficientemente boa,
 previsível, econômica, segura e avaliável para o problema?"
 ```
 
 ---
 
-# Exemplo
+## 🧪 Exemplo
 
 Imagine um sistema educacional que responde perguntas de alunos.
 
@@ -239,15 +253,17 @@ Mas um AI Engineer ainda pergunta:
 - quanto custou?
 - qual foi a latência?
 - o comportamento muda se o modelo for atualizado?
-- o sistema sabe quando não possui informação suficiente? 
--
-# AI Engineering vs treinamento de modelos
+- o sistema sabe quando não possui informação suficiente?
+
+---
+
+## 🆚 AI Engineering vs treinamento de modelos
 
 Uma forma simplificada de comparar:
 
-## Machine Learning tradicional
+### Machine Learning tradicional
 
-```
+```text
 Problema
    ↓
 Dataset
@@ -259,9 +275,9 @@ Modelo específico
 Aplicação
 ```
 
-## AI Engineering
+### AI Engineering
 
-```
+```text
 Foundation Model
        ↓
 Prompt + Contexto
@@ -277,30 +293,84 @@ Essa comparação é apenas um modelo mental introdutório.
 
 Os dois mundos podem se combinar.
 
-# 🧱 Bloco 2 — O que é um Design Pattern?
-## 🎯 Pergunta central 
+---
 
-> [!NOTE]
-> Se diferentes aplicações de IA encontram repetidamente os mesmos problemas, por que deveríamos inventar uma solução nova todas as vezes? 
+## 🧩 Conceitos deste bloco
+
+- [[AI Engineering]]
+- [[Foundation Model]]
+- [[Aplicação de IA Generativa]]
+- [[Não determinismo]]
+- [[Alucinação]]
 
 ---
-## 💡 Ideia central 
+
+## ✍️ Minha compreensão
+
+> TODO: preencher com minhas próprias palavras.
+
+Tente responder:
+
+1. O que diferencia usar um LLM de fazer AI Engineering?
+2. Por que o modelo não é a aplicação completa?
+3. O que muda quando saímos de um protótipo e vamos para produção?
+
+---
+
+## 🧠 Exemplo com minhas palavras
+
+> TODO: criar um exemplo próprio.
+
+Sugestão: escolher algum sistema que eu conheça e explicar:
+
+```text
+modelo
++
+dados
++
+regras
++
+avaliação
++
+segurança
+=
+aplicação
+```
+
+---
+
+## ❓ Dúvidas deste bloco
+
+- TODO
+- TODO
+
+---
+
+# 🧱 Bloco 2 — O que é um Design Pattern?
+
+## 🎯 Pergunta central
+
+> [!NOTE]
+> Se diferentes aplicações de IA encontram repetidamente os mesmos problemas, por que deveríamos inventar uma solução nova todas as vezes?
+
+---
+
+## 💡 Ideia central
 
 > [!NOTE]
 > Design patterns são soluções conhecidas e reutilizáveis para problemas recorrentes de engenharia. Eles não representam uma implementação específica. Representam uma forma reconhecida de pensar e resolver determinado tipo de problema.
+
+---
 
 ## 🧠 De onde vem essa ideia?
 
 Design patterns não nasceram com Inteligência Artificial.
 
-Na engenharia de software, patterns surgem da identificação de problemas que  
-aparecem repetidamente em sistemas diferentes.
+Na engenharia de software, patterns surgem da identificação de problemas que aparecem repetidamente em sistemas diferentes.
 
-Com o tempo, certas estratégias de solução se mostram úteis em vários  
-contextos.
+Com o tempo, certas estratégias de solução se mostram úteis em vários contextos.
 
-Essas estratégias recebem nomes e passam a formar um vocabulário comum  
-entre engenheiros.
+Essas estratégias recebem nomes e passam a formar um vocabulário comum entre engenheiros.
 
 ---
 
@@ -310,25 +380,25 @@ Imagine diferentes equipes desenvolvendo aplicações com LLMs.
 
 Uma equipe encontra:
 
-```
+```text
 "O modelo não retorna o formato esperado."
 ```
 
 Outra encontra:
 
-```
+```text
 "O modelo não conhece nossos documentos internos."
 ```
 
 Outra:
 
-```
+```text
 "O modelo produz informações sem fundamento."
 ```
 
 Outra:
 
-```
+```text
 "O sistema precisa permitir que o modelo consulte uma API."
 ```
 
@@ -338,7 +408,7 @@ Eles reaparecem.
 
 Portanto, podemos começar a pensar:
 
-```
+```text
 Sintoma
    ↓
 Problema recorrente
@@ -356,7 +426,7 @@ Um design pattern não é simplesmente uma função que copiamos.
 
 Não é:
 
-```
+```python
 def resolver_problema():
     ...
 ```
@@ -367,7 +437,7 @@ A implementação pode mudar completamente.
 
 Exemplo conceitual:
 
-```
+```text
 PROBLEMA
 
 O modelo não possui acesso ao conhecimento privado da organização.
@@ -395,7 +465,7 @@ Podemos implementar o mesmo pattern com tecnologias diferentes.
 
 Exemplo:
 
-```
+```text
 RAG
  │
  ├── PostgreSQL + pgvector
@@ -423,7 +493,7 @@ Essa diferença será fundamental durante todo o curso.
 
 Exemplo:
 
-```
+```text
 Pattern
    ↓
 Tool Calling
@@ -431,7 +501,7 @@ Tool Calling
 
 Pode ser implementado com:
 
-```
+```text
 OpenAI SDK
 PydanticAI
 LangChain
@@ -439,8 +509,7 @@ código próprio
 outro framework
 ```
 
-Se uma biblioteca desaparecer amanhã, o problema continua existindo e o  
-pattern continua válido.
+Se uma biblioteca desaparecer amanhã, o problema continua existindo e o pattern continua válido.
 
 ---
 
@@ -450,8 +519,7 @@ Design patterns também ajudam engenheiros a conversar.
 
 Sem um vocabulário compartilhado, alguém poderia dizer:
 
-> "Vamos pegar a pergunta, buscar documentos semanticamente parecidos,  
-> colocar os trechos encontrados no contexto do modelo e pedir a resposta."
+> "Vamos pegar a pergunta, buscar documentos semanticamente parecidos, colocar os trechos encontrados no contexto do modelo e pedir a resposta."
 
 Com um vocabulário comum:
 
@@ -472,7 +540,7 @@ A meta não é apenas decorar esses nomes.
 
 A meta é reconhecer:
 
-> qual problema fez esse pattern existir?
+> Qual problema fez esse pattern existir?
 
 ---
 
@@ -480,12 +548,11 @@ A meta é reconhecer:
 
 O livro apresenta 32 design patterns.
 
-Eles são agrupados por tipos de problemas encontrados na construção de  
-aplicações GenAI.
+Eles são agrupados por tipos de problemas encontrados na construção de aplicações GenAI.
 
 A estrutura de cada pattern normalmente parte de:
 
-```
+```text
 Problema
    ↓
 Solução
@@ -518,7 +585,7 @@ Para cada design pattern, responderemos:
 
 Nosso fluxo será:
 
-```
+```text
 Problema
    ↓
 Hipótese
@@ -568,7 +635,7 @@ Antes de aplicá-la, precisamos avaliar:
 
 Durante esta trilha queremos evitar:
 
-```
+```text
 Tecnologia nova
        ↓
 "Que legal!"
@@ -578,7 +645,7 @@ Onde consigo colocar isso?
 
 Vamos preferir:
 
-```
+```text
 Problema
    ↓
 Requisitos
@@ -590,25 +657,25 @@ Tecnologia
 
 Exemplo ruim:
 
-```
+```text
 "Quero usar multiagentes."
 ```
 
 Pergunta correta:
 
-```
+```text
 "Que problema exige múltiplos agentes?"
 ```
 
 Outro exemplo:
 
-```
+```text
 "Quero usar GraphRAG."
 ```
 
 Pergunta correta:
 
-```
+```text
 "Qual limitação do retrieval atual justifica GraphRAG?"
 ```
 
@@ -626,7 +693,7 @@ Antes de escolher qualquer tecnologia:
 
 Imagine que uma API espera:
 
-```
+```json
 {
   "nome": "Maria",
   "idade": 24
@@ -635,7 +702,7 @@ Imagine que uma API espera:
 
 Mas o modelo responde:
 
-```
+```text
 Claro! Maria possui 24 anos.
 ```
 
@@ -651,7 +718,7 @@ A partir disso podemos procurar patterns adequados para controle de geração.
 
 O raciocínio deve ser:
 
-```
+```text
 Sintoma
    ↓
 Problema
@@ -661,9 +728,9 @@ Pattern
 Implementação
 ```
 
-e não:
+E não:
 
-```
+```text
 Sintoma
    ↓
 Prompt aleatório número 47
@@ -673,7 +740,7 @@ Prompt aleatório número 47
 
 ## 🔗 Relação com AI Engineering
 
-```
+```text
 AI Engineering
       ↓
 Problemas recorrentes
@@ -687,8 +754,7 @@ Aplicações mais robustas
 
 AI Engineering nos coloca diante dos problemas.
 
-Design patterns nos oferecem uma linguagem para reconhecer e abordar  
-alguns desses problemas.
+Design patterns nos oferecem uma linguagem para reconhecer e abordar alguns desses problemas.
 
 ---
 
@@ -700,23 +766,22 @@ alguns desses problemas.
 - [[Framework]]
 - [[Trade-off]]
 - [[Arquitetura de Software]]
+
 ---
+
 # 🧱 Bloco 3 — O que é um Foundation Model?
 
 ## 🎯 Pergunta central
 
-O que exatamente estamos chamando de "modelo base" sobre o qual fazemos
-AI Engineering?
+O que exatamente estamos chamando de "modelo base" sobre o qual fazemos AI Engineering?
 
 ---
 
 ## 💡 Ideia central
 
-Um foundation model é um modelo treinado em grandes conjuntos de dados,
-de maneira geral e não específica para uma única aplicação.
+Um foundation model é um modelo treinado em grandes conjuntos de dados, de maneira geral e não específica para uma única aplicação.
 
-Ele funciona como uma base sobre a qual diferentes tarefas, aplicações
-e sistemas podem ser construídos.
+Ele funciona como uma base sobre a qual diferentes tarefas, aplicações e sistemas podem ser construídos.
 
 ---
 
@@ -732,6 +797,8 @@ Treinamento
 Modelo específico
       ↓
 Uma tarefa
+```
+
 A diferença fundamental é:
 
 > Um foundation model não é criado exclusivamente para uma única aplicação.
@@ -744,7 +811,7 @@ Ele aprende capacidades gerais que posteriormente podem ser reutilizadas.
 
 Em uma visão simplificada de Machine Learning tradicional:
 
-```
+```text
 Nova tarefa
    ↓
 Novo dataset
@@ -756,7 +823,7 @@ Novo modelo
 
 Com foundation models, em muitas situações podemos ter:
 
-```
+```text
 Nova tarefa
    ↓
 Novo prompt / contexto
@@ -764,8 +831,7 @@ Novo prompt / contexto
 Mesmo foundation model
 ```
 
-Isso permite criar várias aplicações sem treinar um novo modelo do zero  
-para cada problema.
+Isso permite criar várias aplicações sem treinar um novo modelo do zero para cada problema.
 
 ---
 
@@ -775,7 +841,7 @@ Uma das etapas fundamentais de criação de um LLM é o pretraining.
 
 Modelo mental:
 
-```
+```text
 Dados
   ↓
 Tokenização
@@ -787,12 +853,11 @@ Base Model
 
 Durante o pretraining, o modelo aprende padrões existentes nos dados.
 
-Um objetivo central dos LLMs é prever o próximo token a partir do contexto  
-anterior.
+Um objetivo central dos LLMs é prever o próximo token a partir do contexto anterior.
 
 Exemplo conceitual:
 
-```
+```text
 "Hoje o céu está..."
         ↓
       modelo
@@ -821,7 +886,7 @@ LLMs trabalham com tokens, e não diretamente com palavras completas.
 
 Modelo simplificado:
 
-```
+```text
 Texto
   ↓
 Tokenizer
@@ -833,7 +898,7 @@ Modelo
 
 Na saída:
 
-```
+```text
 Modelo
   ↓
 Tokens
@@ -866,7 +931,7 @@ Por isso podem existir etapas adicionais.
 
 Modelo mental simplificado:
 
-```
+```text
 Pretraining
    ↓
 Base Model
@@ -894,8 +959,7 @@ Modelo de grande escala especializado em linguagem.
 
 ### Foundation Model
 
-Categoria mais ampla de modelos gerais que podem servir como base para  
-diversas aplicações.
+Categoria mais ampla de modelos gerais que podem servir como base para diversas aplicações.
 
 Um foundation model pode trabalhar com:
 
@@ -920,8 +984,7 @@ Mesmo modelos muito poderosos podem:
 - apresentar não determinismo;
 - falhar em tarefas específicas.
 
-Essas limitações são justamente uma das razões pelas quais precisamos  
-de AI Engineering e Design Patterns.
+Essas limitações são justamente uma das razões pelas quais precisamos de AI Engineering e Design Patterns.
 
 ---
 
@@ -929,7 +992,7 @@ de AI Engineering e Design Patterns.
 
 Podemos guardar este modelo:
 
-```
+```text
 Foundation Model
       =
 Capacidade geral
@@ -942,7 +1005,7 @@ em um sistema utilizável
 
 Ou:
 
-```
+```text
 Foundation Model
        ↓
 Prompt + Contexto
@@ -966,71 +1029,25 @@ Produto
 - [[Tokenizer]]
 - [[Supervised Fine-Tuning]]
 - [[Preference Tuning]]
-# Conceitos deste bloco
-
-- [[AI Engineering]]
-- [[Foundation Model]]
-- [[Aplicação de IA Generativa]]
-- [[Não determinismo]]
-- [[Alucinação]]
 
 ---
 
-# Minha compreensão
-
-> TODO: preencher com minhas próprias palavras.
-
-Tente responder:
-
-1. O que diferencia usar um LLM de fazer AI Engineering?
-2. Por que o modelo não é a aplicação completa?
-3. O que muda quando saímos de um protótipo e vamos para produção?
-
----
-
-# Exemplo com minhas palavras
-
-> TODO: criar um exemplo próprio.
-
-Sugestão:
-
-Escolher algum sistema que eu conheça e explicar:
-
-```
-modelo
-+
-dados
-+
-regras
-+
-avaliação
-+
-segurança
-=
-aplicação
-```
-
----
-
-# Dúvidas deste bloco
-
-- TODO
-- TODO
-
----
-
-# Referência principal
+## 📚 Referência principal
 
 Lakshmanan, Valliappa; Hapke, Hannes.  
-Generative AI Design Patterns.  
+*Generative AI Design Patterns*.  
 O'Reilly Media.
 
 Capítulo 1 — Introduction.
 
-## Laboratório
+---
+
+## 🧪 Laboratório
 
 [[LAB 01 - Primeira chamada LLM]]
 
-## Próxima aula
+---
+
+## ➡️ Próxima aula
 
 [[Aula 02 - Prompts e Contexto]]
